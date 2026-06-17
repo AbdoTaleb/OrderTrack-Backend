@@ -1,0 +1,17 @@
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\bin\Debug\net9.0\OrderTrack.Application.deps.json
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\bin\Debug\net9.0\OrderTrack.Application.runtimeconfig.json
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\bin\Debug\net9.0\OrderTrack.Application.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\bin\Debug\net9.0\OrderTrack.Application.pdb
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\bin\Debug\net9.0\OrderTrack.Domain.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\bin\Debug\net9.0\OrderTrack.Domain.pdb
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.csproj.AssemblyReference.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.AssemblyInfoInputs.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.AssemblyInfo.cs
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.csproj.CoreCompileInputs.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTra.50E567CD.Up2Date
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\refint\OrderTrack.Application.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.pdb
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\OrderTrack.Application.genruntimeconfig.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Application\obj\Debug\net9.0\ref\OrderTrack.Application.dll

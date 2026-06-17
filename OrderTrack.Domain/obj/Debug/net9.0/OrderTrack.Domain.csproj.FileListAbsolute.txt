@@ -1,0 +1,14 @@
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\bin\Debug\net9.0\OrderTrack.Domain.deps.json
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\bin\Debug\net9.0\OrderTrack.Domain.runtimeconfig.json
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\bin\Debug\net9.0\OrderTrack.Domain.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\bin\Debug\net9.0\OrderTrack.Domain.pdb
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.csproj.AssemblyReference.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.AssemblyInfoInputs.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.AssemblyInfo.cs
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\refint\OrderTrack.Domain.dll
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.pdb
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\OrderTrack.Domain.genruntimeconfig.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Domain\obj\Debug\net9.0\ref\OrderTrack.Domain.dll
