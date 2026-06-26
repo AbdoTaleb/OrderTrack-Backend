@@ -25,4 +25,5 @@ public class ProductResponseDto
     public DateTimeOffset CreatedAt { get; set; }
 
     public DateTimeOffset? UpdatedAt { get; set; }
+    public List<ProductImageDto> Images { get; set; } = new();
 }

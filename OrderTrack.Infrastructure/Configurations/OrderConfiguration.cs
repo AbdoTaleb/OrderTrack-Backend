@@ -53,6 +53,10 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
                 v => ToDatabasePaymentStatus(v),
                 v => FromDatabasePaymentStatus(v)
             );
+        builder.Property(x => x.TotalProductionHours)
+            .HasColumnName("total_production_hours")
+            .HasColumnType("numeric(8,2)")
+            .HasDefaultValue(0);
 
         builder.Property(x => x.DepositAmount)
             .HasColumnName("deposit_amount")
@@ -73,6 +77,9 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
 
         builder.Property(x => x.UpdatedAt)
             .HasColumnName("updated_at");
+
+        builder.Property(x => x.CustomerUserId)
+            .HasColumnName("customer_user_id");
     }
 
     private static string ToDatabasePaymentStatus(PaymentStatus status)

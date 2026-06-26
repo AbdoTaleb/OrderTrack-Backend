@@ -8,10 +8,17 @@ namespace OrderTrack.Application.Services;
 public class OrderService : IOrderService
 {
     private readonly IOrderRepository _orderRepository;
+    private readonly IProductRepository _productRepository;
+    private readonly IProductionCalendarService _productionCalendarService;
 
-    public OrderService(IOrderRepository orderRepository)
+    public OrderService(
+        IOrderRepository orderRepository,
+        IProductRepository productRepository,
+        IProductionCalendarService productionCalendarService)
     {
         _orderRepository = orderRepository;
+        _productRepository = productRepository;
+        _productionCalendarService = productionCalendarService;
     }
 
     public async Task<List<OrderResponseDto>> GetAllAsync(
@@ -48,6 +55,7 @@ public class OrderService : IOrderService
             ShippingDate = order.ShippingDate,
             PaymentMethod = order.PaymentMethod,
             TotalAmount = order.TotalAmount,
+            TotalProductionHours = order.TotalProductionHours,
             PaymentStatus = order.PaymentStatus switch
             {
                 Domain.Enums.PaymentStatus.PaidFull => "paid_full",
@@ -122,5 +130,124 @@ public class OrderService : IOrderService
             "canceled" => OrderTrack.Domain.Enums.OrderStatus.Canceled,
             _ => OrderTrack.Domain.Enums.OrderStatus.New
         };
+    }
+
+    public async Task<OrderResponseDto> CreateWithItemsAsync(
+    CreateOrderWithItemsDto dto,
+    CancellationToken cancellationToken = default)
+    {
+        if (dto.Items.Count == 0)
+        {
+            throw new InvalidOperationException("Order must contain at least one item.");
+        }
+
+        var orderItems = new List<OrderItem>();
+        decimal totalProductionHours = 0;
+
+        foreach (var itemDto in dto.Items)
+        {
+            var product = await _productRepository.GetByIdAsync(itemDto.ProductId, cancellationToken);
+
+            if (product is null)
+            {
+                throw new InvalidOperationException("Product not found.");
+            }
+
+            var itemHours = CalculateProductionHours(
+                itemDto.Quantity,
+                product.ProductionHours,
+                product.IsVariableQuantity,
+                product.MinimumQuantity,
+                product.QuantityStep,
+                product.HoursPerStep);
+
+            totalProductionHours += itemHours;
+
+            orderItems.Add(new OrderItem
+            {
+                Id = Guid.NewGuid(),
+                ProductId = product.Id,
+                Quantity = itemDto.Quantity,
+                UnitProductionHours = product.ProductionHours,
+                TotalProductionHours = itemHours,
+                CreatedAt = DateTimeOffset.UtcNow
+            });
+        }
+
+        var receivedDate = dto.ReceivedDate ?? DateOnly.FromDateTime(DateTime.UtcNow);
+
+        var suggestedDate = await _productionCalendarService.SuggestShippingDateAsync(
+            new DTOs.Production.SuggestShippingDateDto
+            {
+                StartDate = receivedDate,
+                RequiredHours = totalProductionHours
+            },
+            cancellationToken);
+
+        var order = new Order
+        {
+            Id = Guid.NewGuid(),
+            CustomerName = dto.CustomerName.Trim(),
+            PhoneNumber = string.IsNullOrWhiteSpace(dto.PhoneNumber) ? null : dto.PhoneNumber.Trim(),
+            Address = string.IsNullOrWhiteSpace(dto.Address) ? null : dto.Address.Trim(),
+            OrderDetails = dto.OrderDetails.Trim(),
+            ReceivedDate = receivedDate,
+            ShippingDate = suggestedDate.SuggestedShippingDate,
+            PaymentMethod = string.IsNullOrWhiteSpace(dto.PaymentMethod) ? null : dto.PaymentMethod.Trim(),
+            TotalAmount = dto.TotalAmount,
+            TotalProductionHours = totalProductionHours,
+            PaymentStatus = ParsePaymentStatus(dto.PaymentStatus),
+            DepositAmount = dto.PaymentStatus == "deposit" ? dto.DepositAmount : 0,
+            Status = ParseOrderStatus(dto.Status),
+            HandledBy = dto.HandledBy,
+            CreatedAt = DateTimeOffset.UtcNow,
+            UpdatedAt = DateTimeOffset.UtcNow,
+            OrderItems = orderItems,
+            ProductionAllocations = suggestedDate.Allocations
+        .Select(a => new ProductionAllocation
+        {
+            Id = Guid.NewGuid(),
+            Date = a.Date,
+            AllocatedHours = a.AllocatedHours,
+            CreatedAt = DateTimeOffset.UtcNow
+        })
+        .ToList()
+        };
+
+        var created = await _orderRepository.CreateWithItemsAsync(order, cancellationToken);
+
+        return MapToResponseDto(created);
+    }
+
+    private static decimal CalculateProductionHours(
+    int quantity,
+    decimal productionHours,
+    bool isVariableQuantity,
+    int? minimumQuantity,
+    int? quantityStep,
+    decimal? hoursPerStep)
+    {
+        if (quantity <= 0)
+        {
+            throw new InvalidOperationException("Quantity must be greater than zero.");
+        }
+
+        if (!isVariableQuantity)
+        {
+            return productionHours * quantity;
+        }
+
+        var min = minimumQuantity ?? 1;
+        var step = quantityStep ?? 1;
+        var stepHours = hoursPerStep ?? productionHours;
+
+        if (quantity < min)
+        {
+            throw new InvalidOperationException($"Minimum quantity is {min}.");
+        }
+
+        var steps = (int)Math.Ceiling((decimal)quantity / step);
+
+        return steps * stepHours;
     }
 }

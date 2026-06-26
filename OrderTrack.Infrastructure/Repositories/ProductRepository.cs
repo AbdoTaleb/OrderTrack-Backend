@@ -20,6 +20,7 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Products
             .AsNoTracking()
+            .Include(p => p.Images)
             .Where(p => p.IsActive)
             .OrderBy(p => p.Name)
             .ToListAsync(cancellationToken);
@@ -31,6 +32,7 @@ public class ProductRepository : IProductRepository
     {
         return await _context.Products
             .AsNoTracking()
+            .Include(p => p.Images)
             .FirstOrDefaultAsync(p => p.Id == id && p.IsActive, cancellationToken);
     }
 

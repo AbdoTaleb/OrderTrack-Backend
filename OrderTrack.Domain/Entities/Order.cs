@@ -4,8 +4,10 @@ namespace OrderTrack.Domain.Entities;
 
 public class Order
 {
+    public Guid? CustomerUserId { get; set; }
     public Guid Id { get; set; }
     public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
+    public decimal TotalProductionHours { get; set; }
 
     public long OrderNumber { get; set; }
 
@@ -36,4 +38,5 @@ public class Order
     public DateTimeOffset? CreatedAt { get; set; }
 
     public DateTimeOffset? UpdatedAt { get; set; }
+    public ICollection<ProductionAllocation> ProductionAllocations { get; set; } = new List<ProductionAllocation>();
 }

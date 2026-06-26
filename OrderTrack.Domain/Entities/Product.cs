@@ -26,4 +26,6 @@ public class Product
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 
     public DateTimeOffset? UpdatedAt { get; set; }
+
+    public ICollection<ProductImage> Images { get; set; } = new List<ProductImage>();
 }

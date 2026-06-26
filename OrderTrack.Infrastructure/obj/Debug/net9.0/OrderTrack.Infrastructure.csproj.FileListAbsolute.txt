@@ -11,6 +11,7 @@ C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\ne
 C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\OrderTrack.Infrastructure.AssemblyInfoInputs.cache
 C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\OrderTrack.Infrastructure.AssemblyInfo.cs
 C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\OrderTrack.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\OrderTrack.Infrastructure.sourcelink.json
 C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\OrderTra.4A770841.Up2Date
 C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\OrderTrack.Infrastructure.dll
 C:\Users\Abdot\Desktop\OrderTrack.Backend\OrderTrack.Infrastructure\obj\Debug\net9.0\refint\OrderTrack.Infrastructure.dll

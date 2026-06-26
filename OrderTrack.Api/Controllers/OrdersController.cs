@@ -52,4 +52,26 @@ public class OrdersController : ControllerBase
             new { id = createdOrder.Id },
             createdOrder);
     }
+
+    [HttpPost("with-items")]
+    public async Task<ActionResult<OrderResponseDto>> CreateWithItems(
+    [FromBody] CreateOrderWithItemsDto dto,
+    CancellationToken cancellationToken)
+    {
+        try
+        {
+            var createdOrder = await _orderService.CreateWithItemsAsync(
+                dto,
+                cancellationToken);
+
+            return CreatedAtAction(
+                nameof(GetById),
+                new { id = createdOrder.Id },
+                createdOrder);
+        }
+        catch (InvalidOperationException ex)
+        {
+            return BadRequest(ex.Message);
+        }
+    }
 }

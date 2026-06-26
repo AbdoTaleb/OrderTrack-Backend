@@ -8,13 +8,16 @@ public class OrderItemService : IOrderItemService
 {
     private readonly IOrderItemRepository _orderItemRepository;
     private readonly IProductRepository _productRepository;
+    private readonly IOrderRepository _orderRepository;
 
     public OrderItemService(
-        IOrderItemRepository orderItemRepository,
-        IProductRepository productRepository)
+    IOrderItemRepository orderItemRepository,
+    IProductRepository productRepository,
+    IOrderRepository orderRepository)
     {
         _orderItemRepository = orderItemRepository;
         _productRepository = productRepository;
+        _orderRepository = orderRepository;
     }
 
     public async Task<List<OrderItemResponseDto>> GetByOrderIdAsync(
@@ -58,6 +61,11 @@ public class OrderItemService : IOrderItemService
         };
 
         var created = await _orderItemRepository.CreateAsync(orderItem, cancellationToken);
+
+        await _orderRepository.UpdateTotalProductionHoursAsync(
+            orderId,
+            created.TotalProductionHours,
+            cancellationToken);
 
         created.Product = product;
 

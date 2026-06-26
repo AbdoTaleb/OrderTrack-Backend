@@ -113,7 +113,18 @@ public class ProductService : IProductService
             QuantityStep = product.QuantityStep,
             HoursPerStep = product.HoursPerStep,
             CreatedAt = product.CreatedAt,
-            UpdatedAt = product.UpdatedAt
+            UpdatedAt = product.UpdatedAt,
+            Images = product.Images
+                .OrderBy(i => i.DisplayOrder)
+                .Select(i => new ProductImageDto
+                {
+                    Id = i.Id,
+                    ImageUrl = i.ImageUrl,
+                    AltText = i.AltText,
+                    DisplayOrder = i.DisplayOrder,
+                    IsMain = i.IsMain
+                })
+                .ToList()
         };
     }
 }

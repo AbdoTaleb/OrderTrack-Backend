@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OrderTrack.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+170c45e7aac1dc37fad1da3544100eca4c959703")]
 [assembly: System.Reflection.AssemblyProductAttribute("OrderTrack.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OrderTrack.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

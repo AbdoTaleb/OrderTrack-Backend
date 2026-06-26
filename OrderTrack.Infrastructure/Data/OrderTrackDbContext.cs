@@ -7,6 +7,7 @@ namespace OrderTrack.Infrastructure.Data;
 
 public class OrderTrackDbContext : DbContext
 {
+
     public OrderTrackDbContext(DbContextOptions<OrderTrackDbContext> options)
         : base(options)
     {
@@ -23,4 +24,8 @@ public class OrderTrackDbContext : DbContext
 
     public DbSet<Product> Products => Set<Product>();
     public DbSet<OrderItem> OrderItems => Set<OrderItem>();
+    public DbSet<NonWorkingDay> NonWorkingDays => Set<NonWorkingDay>();
+
+    public DbSet<ProductionAllocation> ProductionAllocations => Set<ProductionAllocation>();
+    public DbSet<ProductImage> ProductImages => Set<ProductImage>();
 }
